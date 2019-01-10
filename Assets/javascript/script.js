@@ -10,7 +10,7 @@ var LOSSES = 0;
 
 // initialize game on key up of any key
 function initialize() {
-    $(window).keypress(function(e) { // prevent scroll down if space bar is hit
+    $(window).keypress(function(e) {// prevent scroll down if space bar is hit
         if (e.which === 32) {
             e.preventDefault();
         }
