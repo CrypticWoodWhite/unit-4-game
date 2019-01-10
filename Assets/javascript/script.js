@@ -1,67 +1,103 @@
 // global variables
-
-var RANDOM;
+var RANDOMNUMBER;
 var SCORE;
 var CRYSTAL1;
 var CRYSTAL2;
 var CRYSTAL3;
 var CRYSTAL4;
-var WINS;
-var LOSSES;
+var WINS = 0;
+var LOSSES = 0;
 
-// initialize game
-
-$(window).keypress(function(e) {
-    if (e.which == 32) {
-        RANDOM = Math.random(Math.floor() * 102 + 19);
-        console.log(RANDOM);
+// initialize game on key up of any key
+function initialize() {
+    $(window).keyup(function() {
+        RANDOMNUMBER = Math.floor(Math.random() * 102 + 19);
+        CRYSTAL1 = Math.floor(Math.random() * 12 + 1);
+        CRYSTAL2 = Math.floor(Math.random() * 12 + 1);
+        CRYSTAL3 = Math.floor(Math.random() * 12 + 1);
+        CRYSTAL4 = Math.floor(Math.random() * 12 + 1);
         SCORE = 0;
-        CRYSTAL1 = Math.random(Math.floor() * 12 + 1);
-        console.log(CRYSTAL1);
-        CRYSTAL2 = Math.random(Math.floor() * 12 + 1);
-        console.log(CRYSTAL2);
-        CRYSTAL3 = Math.random(Math.floor() * 12 + 1);
-        console.log(CRYSTAL3);
-        CRYSTAL4 = Math.random(Math.floor() * 12 + 1);
-        console.log(CRYSTAL4);
-        WINS = 0;
-        LOSSES = 0;
-        $("#random-number").html = RANDOM;
-        $("#your-score").html = SCORE;
-        $("#wins").html = WINS;
-        $("#losses").html = LOSSES;
-    }
-    else {
-        alert("Try hitting the space bar again!");
-    }
-})
+
+        console.log("random number = " + RANDOMNUMBER);
+        console.log("crystal1 = " + CRYSTAL1);
+        console.log("crystal2 = " + CRYSTAL2);
+        console.log("crystal3 = " + CRYSTAL3);
+        console.log("crystal4 = " + CRYSTAL4);
+        console.log("score = " + SCORE);
+
+        $("#random-number").text(RANDOMNUMBER);
+        $("#your-score").text(SCORE);
+        $("#wins").text(WINS);
+        $("#losses").text(LOSSES);
+    })
+}
+
+initialize();
 
 // start playing
+function play() {
+    $("#crystal1").click(function() {
+        SCORE = SCORE + CRYSTAL1;
+        $("#your-score").text(SCORE);
+        return;
+    })
 
-$("#crystal1").click(function() {
-    SCORE = SCORE + CRYSTAL1;
+    $("#crystal2").click(function() {
+        SCORE = SCORE + CRYSTAL2;
+        $("#your-score").text(SCORE);
+        return;
+    })
 
+    $("#crystal3").click(function() {
+        SCORE = SCORE + CRYSTAL3;
+        $("#your-score").text(SCORE);
+        return;
+    })
 
-})
-
-$("#crystal2").click(function() {
-    
-})
-
-$("#crystal3").click(function() {
-    
-})
-
-$("#crystal4").click(function() {
-    
-})
-
-// win or lose
-
-if (SCORE == RANDOMNUMBER) {
-    alert()
-
+    $("#crystal4").click(function() {
+        SCORE = SCORE + CRYSTAL4;
+        $("#your-score").text(SCORE);
+        return;
+    })
+    if ((SCORE === RANDOMNUMBER) && (RANDOMNUMBER > 0)) {
+        console.log("win");
+        WINS = WINS++;
+        $("#wins").text(WINS);
+        alert("Gneiss win, you rock! Press any key to play again.");
+        reset();
+        return;
+    }
+    if (SCORE > RANDOMNUMBER) {
+        console.log("lose");
+        LOSSES = LOSSES++;
+        $("#losses").text(LOSSES);
+        alert("You lose! But you're tufa than that, so of quartz you're gonna try again, right? Press any key to start over.");
+        reset();
+        return;
+    }
 }
-else if (SCORE > RANDOMNUMBER)
 
-// on to next game
+play();
+
+// reset everything except win/lose count after each round
+function reset() {
+    $(window).keyup(function() {
+        RANDOMNUMBER = Math.floor(Math.random() * 102 + 19);
+        CRYSTAL1 = Math.floor(Math.random() * 12 + 1);
+        CRYSTAL2 = Math.floor(Math.random() * 12 + 1);
+        CRYSTAL3 = Math.floor(Math.random() * 12 + 1);
+        CRYSTAL4 = Math.floor(Math.random() * 12 + 1);
+        SCORE = 0;
+
+        console.log("random number = " + RANDOMNUMBER);
+        console.log("crystal1 = " + CRYSTAL1);
+        console.log("crystal2 = " + CRYSTAL2);
+        console.log("crystal3 = " + CRYSTAL3);
+        console.log("crystal4 = " + CRYSTAL4);
+
+        $("#random-number").text(RANDOMNUMBER);
+        $("#your-score").text(SCORE);
+        $("#wins").text(WINS);
+        $("#losses").text(LOSSES);
+    })
+}

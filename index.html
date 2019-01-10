@@ -23,10 +23,12 @@
             <div class="row mb-4">
                 <div class="col-1"></div>
                 <div class="col-10" id="instructions">
-                    <p class="text-justify"><b>Click the space bar to get started!</b><br/><br/>
-                        There are four crystals below. Each crystal represents a different number that is hidden from you until you click on it. By clicking on each crystal, you also add a specific number of points to your score.<br/><br/>
-                        You win the game by matching your score to the random number. You lose if your score is over the random number.<br/><br/>
-                        Each time the game starts over, the crystals' values and the random number change.<br/>
+                    <p class="text-justify">
+                        There are four crystals below. Each crystal represents a different number of points that is hidden from you until you click on it. By clicking on each crystal, you add those points to your score.<br/><br/>
+                        You win the game by matching your score to the random number. You lose if your score goes over the random number.<br/><br/>
+                        Each time the game starts over, the crystals' values and the random number change.<br/><br/>
+                        In short, this is kind of a weird version of Blackjack!<br/><br/>
+                        <b>Press any key to start playing.</b><br/>
                     </p>
                 </div>
                 <div class="col-1"></div>
@@ -37,7 +39,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Random number</h5>
-                            <p id="random-number">0</p>
+                            <p id="random-number">_</p>
                         </div>
                     </div>
                 </div>
@@ -45,7 +47,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Your score</h5>
-                            <p id="your-score">0</p>
+                            <p id="your-score">_</p>
                         </div>
                     </div>
                 </div>
@@ -96,7 +98,7 @@
         
 
     
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="Assets/javascript/script.js"></script>
 
     </body>
